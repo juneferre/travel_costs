@@ -9,16 +9,23 @@ This .txt file includes a list of the BudgetYourTrip.com URL's for each city tha
 
 ### top_cities.csv
 This is the .csv file made after scraping Wikipedia's 2018/2016 top 100 ranked Most Visited Cities. It contains the following variables:
-**Unnamed**: it indexes the rows starting at 0, but it will be removed at somepoint in the scraping.\n
-**Rank (Euromonitor)**: The Most Visited ranking according to Euromonitor\n
-**City**: The city\n
-**Country / Territory**: The country the city is located in\n
+**Unnamed**: it indexes the rows starting at 0, but it will be removed at somepoint in the scraping.
+
+**Rank (Euromonitor)**: The Most Visited ranking according to Euromonitor
+
+**City**: The city
+
+**Country / Territory**: The country the city is located in
 
 ### cities.csv
 The cities.csv file is a dataset that was created by mergeing the city_links.txt file and the top_cities.csv file. It contains the following variables: 
 **Unnamed: 0**: it indexes the rows starting at 0, but it will be removed at somepoint in the scraping.
+
 **Rank (Euromonitor)**: The Most Visited ranking according to Euromonitor
+
 **City**: The city
+
 **Country / Territory**: The country the city is located in
+
 **Links**: The BudgetYourTrip.com link to that city's pricing information. 
 
