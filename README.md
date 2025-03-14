@@ -32,3 +32,5 @@ The cities.csv file is a dataset that was created by mergeing the city_links.txt
 
 **Links**: The BudgetYourTrip.com link to that city's pricing information. 
 
+### all.csv 
+This is a file I got from [GitHub](https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes/blob/master/all/all.csv). It had the country codes I needed to make my choropleth map, so I combined that dataset with my country_avgs.csv dataset. 
