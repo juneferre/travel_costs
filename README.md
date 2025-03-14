@@ -2,7 +2,7 @@
 ## What's in this repository?
 
 ### scraping.ipynb
-This repository includes a jupyter notebook called "scraping.ipynb", which walks through web scraping code to webscrape tables from [Wikipedia's 2018/2016 top 100 ranked Most Visited Cities](https://en.wikipedia.org/wiki/List_of_cities_by_international_visitors) and [Budget Your trip's](https://www.budgetyourtrip.com/) pricing information with the corresponding cities. 
+This repository includes a jupyter notebook called "scraping.ipynb", which walks through web scraping code to webscrape tables from [Wikipedia's 2018/2016 top 100 ranked Most Visited Cities](https://en.wikipedia.org/wiki/List_of_cities_by_international_visitors) and [Budget Your trip's](https://www.budgetyourtrip.com/) pricing information for the corresponding cities. 
 
 
 ### city_links.txt
