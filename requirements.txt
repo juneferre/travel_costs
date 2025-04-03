@@ -1,0 +1,9 @@
+pandas 
+numpy 
+requests
+re
+BeautifulSoup
+time
+matplotlib.pyplot 
+seaborn 
+scipy.stats 
