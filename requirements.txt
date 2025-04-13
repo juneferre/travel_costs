@@ -7,3 +7,4 @@ time
 matplotlib.pyplot 
 seaborn 
 scipy.stats 
+plotly.graph_objects
