@@ -59,16 +59,4 @@ else:
     )
 
 
-# filtering the dataframe
-if traveler_type == "Individual":
-    trip_duration = st.radio(
-        "Select your trip length:",
-        ["1 Week (Individual)", "2 Weeks (Individual)", "1 Month (Individual)"]
-    )
-else:
-    trip_duration = st.radio(
-        "Select your trip length:",
-        ["1 Week (Couple)", "2 Weeks (Couple)", "1 Month (Couple)"]
-    )
-
 
