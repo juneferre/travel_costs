@@ -22,10 +22,9 @@ st.title('Trip Costs Planner')
 st.write('This app helps you financially plan your trip costs. The costs are approximate and for the Mid-Range Budget Traveler (according to [BudgetYourTrip.com](https://www.budgetyourtrip.com)).')
 
 
-st.sidebar.title('Country Selection')
-
 # --- Sidebar: Country filter ---
 st.sidebar.title('Country Selection')
+st.sidebar.write('Select desired countries from the options provided.')
 selected_countries = st.sidebar.multiselect(
     "Filter by Country/Territory (optional)",
     options=sorted(df["Country / Territory"].unique()),
