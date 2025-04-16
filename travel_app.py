@@ -19,7 +19,7 @@ df = pd.read_csv(url)
 
 # title of the app
 st.title('Trip Costs Planner')
-st.write('This app helps you financially plan your trip costs. The costs are approximate and for the Mid-Range Budget Traveler (according to [BudgetYourTrip.com](https://www.budgetyourtrip.com)).')
+st.write('This app helps you financially plan your trip costs. The costs are approximate and for the Mid-Range Budget Traveler in USD (according to [BudgetYourTrip.com](https://www.budgetyourtrip.com)). The costs DO NOT include flights, visas, or travel insurance.')
 
 
 # --- Sidebar: Country filter ---
