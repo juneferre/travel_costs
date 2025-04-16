@@ -7,6 +7,8 @@ from io import BytesIO
 import streamlit as st
 import numpy as np
 from io import StringIO
+import altair as alt
+
 
 
 
@@ -96,7 +98,7 @@ if selected_cities:
                 st.metric(label=city, value=f"${cost:,.0f}")
 
     with tab2:
-        st.subheader("Cost Breakdown per Day")
+        st.subheader("Cost Breakdown per Day for Solo Travelers")
 
         cost_cols = ["Accommodation1", "Local Transportation1", "Food2", "Entertainment1", "Alcohol2"]
         breakdown = filtered_df[filtered_df["City"].isin(selected_cities)][["City"] + cost_cols]
@@ -116,6 +118,25 @@ if selected_cities:
 
         trip_total = breakdown * num_days
         st.dataframe(trip_total.style.format("${:,.0f}"))
+
+        # --- Bar chart of total trip cost breakdown by category ---
+        melted = trip_total.reset_index().melt(
+            id_vars="City",
+            var_name="Category",
+             value_name="Cost"
+        )
+
+        chart = alt.Chart(melted).mark_bar().encode(
+                x=alt.X("Category:N", title="Category"),
+                y=alt.Y("Cost:Q", title="Total Cost"),
+                color="City:N",
+                column=alt.Column("City:N", title=None, spacing=10)
+        ).properties(
+        title=f"Total Trip Cost Breakdown by Category for {num_days} Days"
+)
+
+        st.altair_chart(chart, use_container_width=True)
+
 
 else:
     st.info("Select one or more cities above to view estimated trip costs.")
