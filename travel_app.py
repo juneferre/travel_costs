@@ -45,7 +45,7 @@ selected_cities = st.multiselect(
 
 # --- Traveler type selector ---
 traveler_type = st.radio(
-    "Are you traveling solo or as a?",
+    "Are you traveling solo or as a couple?",
     ["Individual", "Couple"],
     horizontal=True,
 
@@ -82,15 +82,29 @@ def estimate_trip_cost(city, days, traveler_type):
 
 # --- Show estimated trip costs for selected cities ---
 if selected_cities:
-    st.subheader(f"Estimated Trip Costs for {num_days} Days")
-    cols = st.columns(len(selected_cities)) if len(selected_cities) <= 4 else None
+    tab1, tab2 = st.tabs(["💰 Total Cost", "🍽️ Cost Breakdown"])
 
-    for i, city in enumerate(selected_cities):
-        cost = estimate_trip_cost(city, num_days, traveler_type)
-        if cols:
-            with cols[i]:
+    with tab1:
+        st.subheader(f"Estimated Trip Costs for {num_days} Days")
+        cols = st.columns(len(selected_cities)) if len(selected_cities) <= 4 else None
+        for i, city in enumerate(selected_cities):
+            cost = estimate_trip_cost(city, num_days, traveler_type)
+            if cols:
+                with cols[i]:
+                    st.metric(label=city, value=f"${cost:,.0f}")
+            else:
                 st.metric(label=city, value=f"${cost:,.0f}")
-        else:
-            st.metric(label=city, value=f"${cost:,.0f}")
+
+    with tab2:
+        st.subheader("Cost Breakdown per Day")
+
+        cost_cols = ["Accommodation1", "Local Transportation1", "Food2", "Entertainment1", "Alcohol2"]
+        breakdown = filtered_df[filtered_df["City"].isin(selected_cities)][["City"] + cost_cols]
+        breakdown.set_index("City", inplace=True)
+
+        st.dataframe(breakdown.style.format("${:,.0f}"))
 else:
     st.info("Select one or more cities above to view estimated trip costs.")
+
+
+
