@@ -6,9 +6,12 @@ import requests
 from io import BytesIO
 import streamlit as st
 import numpy as np
+from io import StringIO
 
-# import the dataset
-df = pd.read_csv("final_trip_costs.csv") 
+
+csv_url = st.secrets["data"]["csv_url"]
+response = requests.get(csv_url)
+df = pd.read_csv(StringIO(response.text))
 
 # title of the app
 st.title('Trip Costs Planner')
