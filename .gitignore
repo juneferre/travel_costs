@@ -4,3 +4,4 @@ final_trip_costs.csv
 country_avgs.csv
 ct_avgs_code.csv
 .DS_Store
+venv/
