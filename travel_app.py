@@ -9,9 +9,7 @@ import numpy as np
 from io import StringIO
 
 
-file_id = st.secrets["google_drive"]["file_id"]
-url = f"https://drive.google.com/uc?id={file_id}"
-
+url = st.secrets["data"]["csv_url"]
 df = pd.read_csv(url)
 
 
