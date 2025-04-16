@@ -15,9 +15,6 @@ url = f"https://drive.google.com/uc?export=download&id={file_id}"
 df = pd.read_csv(url)
 
 
-st.write("Google Drive File URL:", url)
-
-
 # title of the app
 st.title('Trip Costs Planner')
 st.write('This app helps you financially plan your trip costs. The costs are approximate and for the Mid-Range Budget Traveler (according to [BudgetYourTrip.com](https://www.budgetyourtrip.com)).')
