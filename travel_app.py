@@ -9,9 +9,11 @@ import numpy as np
 from io import StringIO
 
 
-csv_url = st.secrets["data"]["csv_url"]
-response = requests.get(csv_url)
-df = pd.read_csv(StringIO(response.text))
+file_id = st.secrets["google_drive"]["file_id"]
+url = f"https://drive.google.com/uc?id={file_id}"
+
+df = pd.read_csv(url)
+
 
 st.write(df.columns)
 
