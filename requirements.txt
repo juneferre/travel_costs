@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+matplotlib
+scikit-learn
+seaborn
+plotly
+plotly_express
+plotly.io
+plotly.graph_objects
