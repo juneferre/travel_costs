@@ -30,5 +30,5 @@ else:
 selected_cities = st.multiselect(
     "Choose cities to compare:", 
     options=city_options,
-    default=["London", "Paris", "New York"]  
+    default=[city_options[0]] if city_options.size > 0 else []
 )
