@@ -24,7 +24,7 @@ selected_countries = st.sidebar.multiselect(
     default=[]
 )
 
-# Filter cities based on country selection
+# filter cities based on country selection
 if selected_countries:
     filtered_df = df[df["Country / Territory"].isin(selected_countries)]
 else:
@@ -37,7 +37,36 @@ selected_cities = st.multiselect(
     default=[]
 )
 
-# Show filtered data or metrics
-if selected_cities:
-    city_data = df[df["City"].isin(selected_cities)]
-    st.dataframe(city_data)
+# individual or couple?
+traveler_type = st.radio(
+    "Who are you traveling as?",
+    ["Individual", "Couple"],
+    horizontal=True  
+)
+
+# selecting trip length
+if traveler_type == "Individual":
+    trip_duration = st.radio(
+        "Select your trip length:",
+        ["1 Week (Individual)", "2 Weeks (Individual)", "1 Month (Individual)"]
+    )
+else:
+    trip_duration = st.radio(
+        "Select your trip length:",
+        ["1 Week (Couple)", "2 Weeks (Couple)", "1 Month (Couple)"]
+    )
+
+
+# filtering the dataframe
+if traveler_type == "Individual":
+    trip_duration = st.radio(
+        "Select your trip length:",
+        ["1 Week (Individual)", "2 Weeks (Individual)", "1 Month (Individual)"]
+    )
+else:
+    trip_duration = st.radio(
+        "Select your trip length:",
+        ["1 Week (Couple)", "2 Weeks (Couple)", "1 Month (Couple)"]
+    )
+
+
