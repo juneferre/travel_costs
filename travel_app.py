@@ -101,10 +101,27 @@ if selected_cities:
         cost_cols = ["Accommodation1", "Local Transportation1", "Food2", "Entertainment1", "Alcohol2"]
         breakdown = filtered_df[filtered_df["City"].isin(selected_cities)][["City"] + cost_cols]
         breakdown.set_index("City", inplace=True)
+        breakdown.rename(columns={
+            "Accommodation1": "Accommodation",
+            "Local Transportation1": "Transport",
+            "Food2": "Food",
+            "Entertainment1": "Entertainment",
+            "Alcohol2": "Alcohol"
+        }, inplace=True)
 
         st.dataframe(breakdown.style.format("${:,.0f}"))
+
+
+        st.subheader(f"Cost Breakdown for {num_days} Days")
+
+        trip_total = breakdown * num_days
+        st.dataframe(trip_total.style.format("${:,.0f}"))
+
 else:
     st.info("Select one or more cities above to view estimated trip costs.")
+
+
+
 
 
 
