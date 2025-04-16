@@ -42,7 +42,9 @@ selected_cities = st.multiselect(
 traveler_type = st.radio(
     "Are you traveling solo or as a?",
     ["Individual", "Couple"],
-    horizontal=True
+    horizontal=True,
+
+    key="traveler_type"
 )
 
 # --- Number of days input ---
