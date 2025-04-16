@@ -48,13 +48,13 @@ traveler_type = st.radio(
 if traveler_type == "Individual":
     trip_duration = st.radio(
         "Select your trip length:",
-        ["1 Week (Individual)", "2 Weeks (Individual)", "1 Month (Individual)"],
+        ["1 Week", "2 Weeks", "1 Month"],
         key="individual_trip_duration"  
     )
 else:
     trip_duration = st.radio(
         "Select your trip length:",
-        ["1 Week (Couple)", "2 Weeks (Couple)", "1 Month (Couple)"],
+        ["1 Week", "2 Weeks", "1 Month"],
         key="couple_trip_duration"
     )
 
