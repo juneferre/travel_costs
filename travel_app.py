@@ -14,7 +14,8 @@ url = f"https://drive.google.com/uc?export=download&id={file_id}"
 df = pd.read_csv(url)
 
 
-st.write(df.columns)
+st.write("Google Drive File URL:", url)
+
 
 # title of the app
 st.title('Trip Costs Planner')
