@@ -7,7 +7,7 @@ from io import BytesIO
 import streamlit as st
 import numpy as np
 from io import StringIO
-import gdown
+
 
 
 file_id = st.secrets["google_drive"]["file_id"]
