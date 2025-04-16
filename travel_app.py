@@ -12,7 +12,6 @@ from io import StringIO
 csv_url = st.secrets["data"]["csv_url"]
 response = requests.get(csv_url)
 df = pd.read_csv(StringIO(response.text))
-df.rename(columns={"Country / Territory": "Country/Territory"}, inplace=True)
 
 
 # title of the app
