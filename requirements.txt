@@ -1,5 +1,4 @@
 pandas 
-numpy 
 requests
 re
 BeautifulSoup
@@ -9,3 +8,4 @@ seaborn
 scipy.stats 
 plotly.graph_objects
 numpy
+streamlit
