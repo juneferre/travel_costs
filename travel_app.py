@@ -10,70 +10,26 @@ import streamlit as st
 # import the dataset
 df = pd.read_csv("final_trip_costs.csv") 
 
+# title of the app
+st.title('Trip Costs Planner')
+st.write('This app helps you financially plan your trip costs. The costs are approximate and for the Mid-Range Budget Traveler (according to [BudgetYourTrip.com](https://www.budgetyourtrip.com)).')
 
 
-df['total_births'] = df.groupby(['year', 'sex'])['count'].transform('sum')
-df['prop'] = df['count'] / df['total_births']
-st.title('Financially Planning Your Trips')
+# sidebar
+st.sidebar.title('Country Selection')
+with st.sidebar:
+    selected_country = st.selectbox(
+        "Filter by Country/Territory", 
+        options=["All"] + sorted(df["Country / Territory"].unique())
+    )
 
-tab1, tab2, tab3 = st.tabs(['Overall', 'By Name', 'By Year'])
+if selected_country == "All":
+    city_options = df["City"].unique()
+else:
+    city_options = df[df["Country / Territory"] == selected_country]["City"].unique()
 
-with tab1: 
-    st.write('Here is stuff about all the data')
-
-with tab2: 
-    st.write('Name')
-
-    # pick a name
-    noi = st.text_input("Enter a Name (it's case sensitive)")
-    plot_female = st.checkbox('Plot female line')
-    plot_male = st.checkbox('Plot male line')
-    name_df = df[df['name']==noi]
-
-    fig = plt.figure(figsize=(15, 8))
-
-    if plot_female:
-        sns.lineplot(data=name_df[name_df['sex'] == 'F'], x='year', y='prop', label='Female')
-
-    if plot_male:
-        sns.lineplot(data=name_df[name_df['sex'] == 'M'], x='year', y='prop', label='Male')
-
-    plt.title(f'Popularity of {noi} over time')
-    plt.xlim(1880, 2025)
-    plt.xlabel('Year')
-    plt.ylabel('Proportion')
-    plt.xticks(rotation=90)
-    plt.legend()
-    plt.tight_layout()
-
-    st.pyplot(fig)
-
-
-
-with tab3:
-    st.write('Year')
-
-    year_of_interest = st.number_input('Enter a year', min_value=1880, max_value=2025, step=1, value=1990)
-    top_names = df[df['year'] == year_of_interest]
-
-    # st.write(top_names.shape)
-
-    # ---- FEMALE NAMES ----
-    top_female = top_names[top_names['sex'] == 'F'].nlargest(10, 'count')
-    f_year_fig = plt.figure(figsize=(15, 8))
-    sns.barplot(data=top_female, x='count', y='name')
-    plt.title(f"Top 10 Female Names in {year_of_interest}")
-    plt.xlabel('Count')
-    plt.ylabel('Name')
-    plt.tight_layout()
-    st.pyplot(f_year_fig)
-
-    # ---- MALE NAMES ----
-    top_male = top_names[top_names['sex'] == 'M'].nlargest(10, 'count')
-    m_year_fig = plt.figure(figsize=(15, 8))
-    sns.barplot(data=top_male, x='count', y='name')
-    plt.title(f"Top 10 Male Names in {year_of_interest}")
-    plt.xlabel('Count')
-    plt.ylabel('Name')
-    plt.tight_layout()
-    st.pyplot(m_year_fig)
+selected_cities = st.multiselect(
+    "Choose cities to compare:", 
+    options=city_options,
+    default=["London", "Paris", "New York"]  
+)
