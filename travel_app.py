@@ -10,7 +10,7 @@ from io import StringIO
 
 
 file_id = st.secrets["google_drive"]["file_id"]
-url = f"https://drive.google.com/uc?id={file_id}"
+url = f"https://drive.google.com/uc?export=download&id={file_id}"
 df = pd.read_csv(url)
 
 
