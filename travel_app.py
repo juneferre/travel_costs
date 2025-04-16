@@ -129,7 +129,7 @@ if selected_cities:
         chart = alt.Chart(melted).mark_bar().encode(
                 x=alt.X("Category:N", title="Category"),
                 y=alt.Y("Cost:Q", title="Total Cost"),
-                color="City:N",
+                color="pastel2",
                 column=alt.Column("City:N", title=None, spacing=10)
         ).properties(
         title=f"Total Trip Cost Breakdown by Category for {num_days} Days"
