@@ -13,6 +13,7 @@ csv_url = st.secrets["data"]["csv_url"]
 response = requests.get(csv_url)
 df = pd.read_csv(StringIO(response.text))
 
+st.write(df.columns)
 
 # title of the app
 st.title('Trip Costs Planner')
@@ -25,13 +26,13 @@ st.sidebar.title('Country Selection')
 st.sidebar.title('Country Selection')
 selected_countries = st.sidebar.multiselect(
     "Filter by Country/Territory (optional)",
-    options=sorted(df["Country/Territory"].unique()),
+    options=sorted(df["Country / Territory"].unique()),
     default=[]
 )
 
 # --- Filter data based on selected countries ---
 if selected_countries:
-    filtered_df = df[df["Country/Territory"].isin(selected_countries)]
+    filtered_df = df[df["Country / Territory"].isin(selected_countries)]
 else:
     filtered_df = df  # No filter applied
 
