@@ -40,7 +40,7 @@ selected_cities = st.multiselect(
 
 # --- Traveler type selector ---
 traveler_type = st.radio(
-    "Who are you traveling as?",
+    "Are you traveling solo or as a?",
     ["Individual", "Couple"],
     horizontal=True
 )
@@ -75,7 +75,7 @@ def estimate_trip_cost(city, days, traveler_type):
 
 # --- Show estimated trip costs for selected cities ---
 if selected_cities:
-    st.subheader(f"💵 Estimated Trip Costs for {num_days} Days")
+    st.subheader(f"Estimated Trip Costs for {num_days} Days")
     cols = st.columns(len(selected_cities)) if len(selected_cities) <= 4 else None
 
     for i, city in enumerate(selected_cities):
